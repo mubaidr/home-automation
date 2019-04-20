@@ -1,19 +1,64 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <b-loading :can-cancel="true"></b-loading>
+    <div class="columns is-mobile">
+      <div class="column">
+        <button class="button is-dark is-square">
+          <b-icon icon="bell" size="is-large"> </b-icon>
+        </button>
+      </div>
+      <div class="column">
+        <button class="button is-info is-square">
+          <b-icon icon="bell" size="is-large"> </b-icon>
+        </button>
+      </div>
+      <div class="column">
+        <button class="button is-primary is-square">
+          <b-icon icon="bell" size="is-large"> </b-icon>
+        </button>
+      </div>
+    </div>
+    <div class="columns is-mobile">
+      <div class="column">
+        <button class="button is-success is-square">
+          <b-icon icon="bell" size="is-large"> </b-icon>
+        </button>
+      </div>
+      <div class="column">
+        <button class="button is-warning is-square">
+          <b-icon icon="bell" size="is-large"> </b-icon>
+        </button>
+      </div>
+      <div class="column">
+        <button class="button is-danger is-square">
+          <b-icon icon="bell" size="is-large"> </b-icon>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+  name: 'Home',
+  components: {},
+  data: () => {
+    return {
+      conrols: [
+        {
+          name: '',
+          title: '',
+          icon: '',
+        },
+      ],
+    }
+  },
+
+  methods: {
+    getRandomColor() {
+      return 'is-primary'
+    },
+  },
 }
 </script>
