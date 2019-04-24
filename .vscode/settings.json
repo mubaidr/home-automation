@@ -7,5 +7,6 @@
     "functional": "cpp",
     "xfunctional": "cpp",
     "cstdlib": "cpp"
-  }
+  },
+  "C_Cpp.intelliSenseEngineFallback": "Disabled"
 }

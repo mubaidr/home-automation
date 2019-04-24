@@ -3,10 +3,10 @@
     "@mdi/font": "^3.6.95",
     "axios": "^0.18.0",
     "buefy": "^0.7.4",
-    "core-js": "^2.6.5",
+    "core-js": "^3.0.1",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.3"
+    "vue-router": "^3.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",
@@ -16,10 +16,10 @@
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "sass": "^1.18.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "sass": "^1.19.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.6.10"
   },
   "name": "ui",
   "private": true,

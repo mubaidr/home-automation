@@ -1,23 +1,32 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "path": ["C:\\\\Program Files (x86)\\\\Arduino"]
-      },
-      "cStandard": "c11",
-      "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe",
-      "cppStandard": "c++17",
-      "forcedInclude": [],
-      "includePath": [
-        "C:\\\\Users\\\\mubai\\\\AppData\\\\Local\\\\Arduino15\\\\packages\\\\**",
-        "C:\\\\Program Files (x86)\\\\Arduino\\\\**",
-        "C:\\\\Program Files (x86)\\\\Microsoft Visual Studio 14.0\\\\VC\\\\include\\\\**",
-        "C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Include\\\\10.0.10240.0\\\\ucrt\\\\**",
-        "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.10240.0\\ucrt"
-      ],
-      "intelliSenseMode": "msvc-x64",
-      "name": "Win32"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe",
+            "defines": [
+                "_DEBUG",
+                "USBCON"
+            ],
+            "forcedInclude": [],
+            "includePath": [
+                "C:\\Users\\mubai\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**",
+                "C:\\Users\\mubai\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.5.0\\**",
+                "${workspaceFolder}/**",
+                "<arduino_install_path>/hardware/tools/avr/avr/include/**",
+                "<arduino_install_path>/tools/**",
+                "<arduino_install_path>/hardware/**",
+                "<arduino_install_path>/libraries/**",
+                "C:/Users/mubai/Documents/Arduino/libraries/**",
+                "C:/Users/mubai/Documents/Arduino/hardware/**",
+                "C:/Users/mubai/AppData/Local/Arduino15/packages/**",
+                "C:/Users/mubai/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/2.5.0/variants/d1/**",
+                "C:/Users/mubai/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/2.5.0/libraries/ESP8266WiFi/**",
+                "C:/Users/mubai/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/2.5.0/variants/d1",
+                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/**",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt/**"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "name": "Win32"
+        }
+    ],
+    "version": 4
 }
