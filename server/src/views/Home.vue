@@ -34,6 +34,7 @@
         </button>
       </div>
     </div>
+    {{ this.$data }}
   </div>
 </template>
 
@@ -56,7 +57,8 @@ export default {
     axios
       .get(`${this.server}`)
       .then(res => {
-        this.status = res.data
+        console.log(res.data)
+        this.$set(this, 'status', res.data)
       })
       .catch(err => {
         console.log(err)
@@ -79,7 +81,8 @@ export default {
       axios
         .get(`${this.server}/light`)
         .then(res => {
-          this.status = res.data
+          console.log(res.data)
+          this.$set(this, 'status', res.data)
         })
         .catch(err => {
           console.log(err)
@@ -90,7 +93,8 @@ export default {
       axios
         .get(`${this.server}/door`)
         .then(res => {
-          this.status = res.data
+          console.log(res.data)
+          this.$set(this, 'status', res.data)
         })
         .catch(err => {
           console.log(err)

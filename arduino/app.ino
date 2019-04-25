@@ -15,12 +15,14 @@ String sendStatus()
   result = "{";
 
   // bulb
-  result += "bulb:";
-  result += digitalRead(LED_PIN) == HIGH ? "1" : "0";
+  result += "\"bulb\":";
+  result += (digitalRead(LED_PIN) == HIGH) ? "true" : "false";
+  result += ",";
 
   // door
-  result += "door:";
-  result += digitalRead(MOTOR_PIN) == HIGH ? "1" : "0";
+  result += "\"door\":";
+  result += (digitalRead(MOTOR_PIN) == HIGH) ? "true" : "false";
+  // result += ",";
 
   result += "}";
   return result;
