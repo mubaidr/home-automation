@@ -2,8 +2,12 @@
   <div class="home">
     <div class="columns is-mobile">
       <div class="column">
-        <button class="button is-dark is-square" @click="toggleBulb">
-          <template v-if="bulbOn">
+        <button
+          class="button is-square"
+          :class="getRandomColor()"
+          @click="toggleBulb"
+        >
+          <template v-if="status.bulb">
             <b-icon icon="lightbulb" size="is-large"></b-icon>
             <span>Turn Off</span>
           </template>
@@ -14,8 +18,12 @@
         </button>
       </div>
       <div class="column">
-        <button class="button is-info is-square" @click="toggleDoor">
-          <template v-if="bulbOn">
+        <button
+          class="button is-square"
+          :class="getRandomColor()"
+          @click="toggleDoor"
+        >
+          <template v-if="status.door">
             <b-icon icon="door-open" size="is-large"></b-icon>
             <span>Close Door</span>
           </template>
@@ -25,28 +33,6 @@
           </template>
         </button>
       </div>
-      <div class="column">
-        <button class="button is-primary is-square">
-          <b-icon icon="bell" size="is-large"> </b-icon>
-        </button>
-      </div>
-    </div>
-    <div class="columns is-mobile">
-      <div class="column">
-        <button class="button is-success is-square">
-          <b-icon icon="bell" size="is-large"> </b-icon>
-        </button>
-      </div>
-      <div class="column">
-        <button class="button is-warning is-square">
-          <b-icon icon="bell" size="is-large"> </b-icon>
-        </button>
-      </div>
-      <div class="column">
-        <button class="button is-danger is-square">
-          <b-icon icon="bell" size="is-large"> </b-icon>
-        </button>
-      </div>
     </div>
   </div>
 </template>
@@ -54,29 +40,46 @@
 <script>
 import axios from 'axios'
 
-// @ is an alias to /src
-
 export default {
   name: 'Home',
-  components: {},
   data: () => {
     return {
-      bulbOn: false,
-      doorOpen: false,
+      server: 'http://192.168.10.222',
+      status: {
+        bulb: false,
+        door: false,
+      },
     }
+  },
+
+  created() {
+    axios
+      .get(`${this.server}`)
+      .then(res => {
+        this.status = res.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
   },
 
   methods: {
     getRandomColor() {
-      return 'is-primary'
+      const items = [
+        'is-primary',
+        'is-warning',
+        'is-danger',
+        'is-success',
+        'is-dark',
+      ]
+      return items[Math.floor(Math.random() * items.length)]
     },
 
     toggleBulb() {
       axios
-        .get('http://192.168.10.222/light')
+        .get(`${this.server}/light`)
         .then(res => {
-          console.log(res)
-          this.bulbOn = !this.bulbOn
+          this.status = res.data
         })
         .catch(err => {
           console.log(err)
@@ -85,10 +88,9 @@ export default {
 
     toggleDoor() {
       axios
-        .get('http://192.168.10.222/door')
+        .get(`${this.server}/door`)
         .then(res => {
-          console.log(res)
-          this.doorOpen = !this.doorOpen
+          this.status = res.data
         })
         .catch(err => {
           console.log(err)

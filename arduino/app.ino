@@ -1,35 +1,39 @@
-#include <C:\Users\mubai\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.5.0\variants\d1\pins_arduino.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 
-int LED_PIN = D0;   // D0
-int MOTOR_PIN = D1; // D1
+// define all pins
+int LED_PIN = D0;
+int MOTOR_PIN = D1;
 
+// define the server
 ESP8266WebServer server(80);
 
+// collect and send status for all devices
 String sendStatus()
 {
   String result;
-  result = "";
+  result = "{";
 
-  if (digitalRead(LED_PIN) == HIGH)
-  {
-    result = result + "bulb=1";
-  }
-  else
-  {
-    result = result + "bulb=0";
-  }
+  // bulb
+  result += "bulb:";
+  result += digitalRead(LED_PIN) == HIGH ? "1" : "0";
 
+  // door
+  result += "door:";
+  result += digitalRead(MOTOR_PIN) == HIGH ? "1" : "0";
+
+  result += "}";
   return result;
 }
 
+// root or status route
 void handle_OnRoot()
 {
   server.sendHeader("Access-Control-Allow-Origin", "*");
   server.send(200, "application/json", sendStatus());
 }
 
+// toggle bulb route
 void handle_OnLight()
 {
   digitalWrite(LED_PIN, !digitalRead(LED_PIN));
@@ -37,20 +41,23 @@ void handle_OnLight()
   server.send(200, "application/json", sendStatus());
 }
 
+// toggle door route
 void handle_OnDoor()
 {
   digitalWrite(MOTOR_PIN, !digitalRead(MOTOR_PIN));
-  delay(5000);
+  delay(3000);
   digitalWrite(MOTOR_PIN, !digitalRead(MOTOR_PIN));
   server.sendHeader("Access-Control-Allow-Origin", "*");
   server.send(200, "application/json", sendStatus());
 }
 
+// invalid route
 void handle_NotFound()
 {
   server.send(404);
 }
 
+// setup network and connection
 void setupNetwork()
 {
   char ssid[] = "Olalalalala";
@@ -83,6 +90,7 @@ void setupNetwork()
   Serial.print(WiFi.localIP());
 }
 
+// setup all pin modes
 void pinModes()
 {
   pinMode(LED_PIN, OUTPUT);
